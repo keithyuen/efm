@@ -7,3 +7,5 @@ logs/pg-primary/efm/efm_cluster.log
 logs/pg-primary/postgresql/postgresql-2025-08-08_025611.log
 logs/pg-standby/efm/efm_cluster.log
 logs/pg-standby/postgresql/postgresql-2025-08-08_025657.log
+.DS_Store
+My-notes.txt

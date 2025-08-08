@@ -23,36 +23,45 @@ psql -U postgres -c "
   \$\$;
 "
 
-# Create EFM monitoring user
-echo "Creating EFM monitoring user..."
-psql -U postgres -c "
-  DO \$\$
-  BEGIN
-    IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'efm') THEN
-      CREATE USER efm WITH LOGIN PASSWORD 'efm';
-      GRANT CONNECT ON DATABASE postgres TO efm;
-      GRANT CONNECT ON DATABASE testdb TO efm;
-    END IF;
-  END
-  \$\$;
-"
+# # Create EFM monitoring user
+# echo "Creating EFM monitoring user..."
+# psql -U postgres -c "
+#   DO \$\$
+#   BEGIN
+#     IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'efm') THEN
+#       CREATE USER efm WITH LOGIN PASSWORD 'efm';
+#       GRANT CONNECT ON DATABASE postgres TO efm;
+#     END IF;
+#   END
+#   \$\$;
+# "
 
-# Create test database if it doesn't exist
-echo "Creating test database..."
-psql -U postgres -c "
-  SELECT 'CREATE DATABASE testdb'
-  WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'testdb')\gexec
-"
+# # Grant necessary permissions to EFM user
+# echo "Granting permissions to EFM user..."
+# psql -U postgres -d postgres -c "
+#   GRANT ALL PRIVILEGES ON DATABASE postgres TO efm;
+# "
 
-# Grant necessary permissions to EFM user
-echo "Granting permissions to EFM user..."
-psql -U postgres -d testdb -c "
-  GRANT ALL PRIVILEGES ON DATABASE testdb TO efm;
-"
+# # Grant EFM monitoring roles and permissions
+# echo "Granting EFM monitoring roles and permissions..."
+# psql -U postgres -c "
+#   -- Grant required roles for EFM monitoring
+#   GRANT pg_read_all_settings TO efm;
+#   GRANT pg_read_all_stats TO efm;
+#   GRANT pg_monitor TO efm;
+#   -- Grant specific permissions for WAL replay functions
+#   GRANT EXECUTE ON FUNCTION pg_wal_replay_pause() TO efm;
+#   GRANT EXECUTE ON FUNCTION pg_wal_replay_resume() TO efm;
+#   GRANT EXECUTE ON FUNCTION pg_reload_conf() TO efm;
+#   -- Additional monitoring permissions
+#   GRANT EXECUTE ON FUNCTION pg_is_in_recovery() TO efm;
+#   GRANT EXECUTE ON FUNCTION pg_last_wal_receive_lsn() TO efm;
+#   GRANT EXECUTE ON FUNCTION pg_last_wal_replay_lsn() TO efm;
+# "
 
 # Create a test table for verification
 echo "Creating test table..."
-psql -U postgres -d testdb -c "
+psql -U postgres -d postgres -c "
   CREATE TABLE IF NOT EXISTS test_replication (
     id SERIAL PRIMARY KEY,
     message TEXT,

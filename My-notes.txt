@@ -6,6 +6,13 @@ Primary: 172.20.0.10 pg-primary.efm.orb.local 5432
 Standby: 172.20.0.11 pg-standby.efm.orb.local 5433
 Witness: 172.20.0.12 efm-witness.efm.orb.local 
 
+# rebuild
+docker-compose down --volumes
+docker-compose build
+docker-compose up -d
+
+su -- postgres
+
 psql -h pg-primary.efm.orb.local -p 5432 -U postgres
 
 /usr/edb/efm-5.0/bin/efm cluster-status efm_cluster
@@ -22,7 +29,9 @@ CREATE TABLE IF NOT EXISTS test_replication (
 
 \dt 
 
-INSERT INTO test_replication (message) VALUES ('Initial Test');
+INSERT INTO test_replication (message) VALUES ('Test1');
+
+INSERT INTO test_replication (message) VALUES ('Standby Test1');
 
 SELECT * FROM test_replication;
 
@@ -38,3 +47,145 @@ INSERT INTO test_replication (message) VALUES ('Before failover test');
 SELECT * FROM test_replication;
 
 INSERT INTO test_replication (message) VALUES ('After failover test');
+
+
+====
+SWITCHOVER logs
+====
+#===PRIMARY
+2025-08-08 04:34:04 com.enterprisedb.efm.exec.ExecUtil performExec INFO: ProcessResult{id=12, exitValue=0, errorOut='', stdOut='waiting for server to shut down....... done
+server stopped'}
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent setAgentDelegate INFO: setAgentDelegate: I was Primary, will now be Idle.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent setAgentDelegate INFO: Setting agent to type Idle
+2025-08-08 04:34:04 com.enterprisedb.efm.ClusterState removeAddress INFO: Removing primary address pg-primary-11892(172.20.0.10)
+2025-08-08 04:34:04 com.enterprisedb.efm.ClusterState setPrimary INFO: Setting primary node null
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmNode addToClusterStatus INFO: Removed pg-primary-11892(172.20.0.10) of type PRIMARY from cluster state. Adding it back in as type IDLE.
+2025-08-08 04:34:04 com.enterprisedb.efm.ClusterState removeFailedHost INFO: Removing 172.20.0.10 from failed list if present.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmNode chooseStandbyForPromotion INFO: Creating list of standbys to consider for promotion.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmNode chooseStandbyForPromotion INFO: Only one standby to choose from: StandbyInfo{address=pg-standby-2449(172.20.0.11), host='172.20.0.11', receiveLocation='null', replayLocation='null', (latest='')}
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent startMonitoring WARN: Will tell standby at 172.20.0.11 to promote.
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.ClusterUtils tellRemoteStandbyToPromote INFO: Telling standby at 172.20.0.11 to promote.
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.ClusterUtils getObjectFromNode INFO: Sending request promote_self_172.20.0.10 to node pg-standby-2449(172.20.0.11)
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.ClusterUtils tellRemoteStandbyToPromote INFO: Received value=true, received=true, suspected=false for promote_self_172.20.0.10 from pg-standby-2449(172.20.0.11).
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.ClusterUtils tellRemoteStandbyToPromote INFO: Node 172.20.0.11 will attempt promotion.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent startMonitoring INFO: Setting state back to MONITORING instead of PROMOTING
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmNode setNodeState INFO: New internal state: MONITORING, previous: PROMOTING
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent run INFO: Running as the db owner: true
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent handleStatusCall INFO: responding to db status request with status: Idle%%172.20.0.10%%false%% %%false
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmNode setLastPromoted INFO: Last promoted address set to 172.20.0.11
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.JGroupsDelegate handle INFO: Last promoted address set to 172.20.0.11
+2025-08-08 04:34:04 com.enterprisedb.efm.ClusterState removeAddress INFO: Removing standby address pg-standby-2449(172.20.0.11)
+2025-08-08 04:34:04 com.enterprisedb.efm.ClusterState rebuildFOPriority INFO: New failover priority list: []
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmNode addToClusterStatus INFO: Removed pg-standby-2449(172.20.0.11) of type STANDBY from cluster state. Adding it back in as type PROMOTING.
+2025-08-08 04:34:04 com.enterprisedb.efm.ClusterState removeFailedHost INFO: Removing 172.20.0.11 from failed list if present.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.JGroupsDelegate handle INFO: Received signal to switch to new primary. Node type is IDLE and internal state is MONITORING.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent reconfigureAsStandby INFO: Reconfiguring database as standby.
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.RecoveryUtils addRecoveryParamsToPrimary INFO: Updating recovery parameters.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent createStandbySignalFile INFO: Creating standby.signal file to start original primary as standby.
+2025-08-08 04:34:04 com.enterprisedb.efm.exec.ExecUtil performExec INFO: 13:[ /usr/edb/efm-5.0/bin/efm_db_functions touchfile /var/lib/postgresql/data/standby.signal]
+2025-08-08 04:34:04 com.enterprisedb.efm.exec.ExecUtil performExec INFO: ProcessResult{id=13, exitValue=0, errorOut='', stdOut=''}
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent reconfigureAsStandby INFO: Restarting database as standby.
+2025-08-08 04:34:04 com.enterprisedb.efm.exec.ExecUtil performExec INFO: 14:[ /usr/edb/efm-5.0/bin/efm_db_functions startdb /etc/edb/efm-5.0/efm_cluster.properties]
+2025-08-08 04:34:04 com.enterprisedb.efm.exec.ExecUtil performExec INFO: ProcessResult{id=14, exitValue=0, errorOut='', stdOut='waiting for server to start....2025-08-08 04:34:04 GMT [1007]: [1-1] user=,db=,app=,client= LOG:  redirecting log output to logging collector process
+2025-08-08 04:34:04 GMT [1007]: [2-1] user=,db=,app=,client= HINT:  Future log output will appear in directory "/var/log/postgresql".
+ done
+server started'}
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent resumeMonitoringWithRetries INFO: Resuming monitoring.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent resumeMonitoring INFO: Connecting to database and determining recovery status
+2025-08-08 04:34:04 com.enterprisedb.efm.DBMonitor isInRecovery INFO: Performing pg_is_in_recovery query on jdbc:postgresql://172.20.0.10:5432/postgres?ApplicationName=efm-5.0
+2025-08-08 04:34:04 com.enterprisedb.efm.DBMonitor isInRecovery INFO: Query result: true
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent resumeMonitoring INFO: Database version has already been set in environment.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent setAgentDelegate INFO: setAgentDelegate: I was Idle, will now be Standby.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent setAgentDelegate INFO: Setting agent to type Standby
+2025-08-08 04:34:04 com.enterprisedb.efm.ClusterState removeAddress INFO: Removing idle address pg-primary-11892(172.20.0.10)
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmNode addToClusterStatus INFO: Removed pg-primary-11892(172.20.0.10) of type IDLE from cluster state. Adding it back in as type STANDBY.
+2025-08-08 04:34:04 com.enterprisedb.efm.ClusterState removeFailedHost INFO: Removing 172.20.0.10 from failed list if present.
+2025-08-08 04:34:04 com.enterprisedb.efm.ClusterState rebuildFOPriority INFO: New failover priority list: [172.20.0.10]
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmNode addToClusterStatus INFO: An existing agent is no longer IDLE. All nodes will verify that they can connect to the database.
+2025-08-08 04:34:04 com.enterprisedb.efm.DBMonitor checkOnce INFO: DB monitor testing jdbc:postgresql://172.20.0.10:5432/postgres?ApplicationName=efm-5.0
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent lambda$resumeMonitoring$3 INFO: Resuming monitoring.
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.ClusterUtils getObjectFromNode INFO: Sending request physical_slot_info_request to node pg-standby-2449(172.20.0.11)
+2025-08-08 04:34:04 com.enterprisedb.efm.DBMonitor watchDB INFO: DBMonitor connecting to jdbc:postgresql://172.20.0.10:5432/postgres?ApplicationName=efm-5.0
+2025-08-08 04:34:04 com.enterprisedb.efm.DBMonitor watchDB INFO: Using ssl mode disable for jdbc connections.
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.Notifications sendMail INFO: Sending notification:
+From: efm@localhost
+To: [admin@example.com]
+Subject: [INFO] EFM Standby agent running on 172.20.0.10 for cluster efm_cluster
+Body:
+EFM node:     172.20.0.10
+Cluster name:  efm_cluster
+Database name: postgres
+VIP:
+
+Standby agent is running and database health is being monitored.
+
+#===STANDBY
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.JGroupsDelegate setState INFO: setState called: [ total nodes: 3 primary: null promoting: null standbys (1): pg-standby-2449(172.20.0.11)  witnesses (1): efm-witness-59155(172.20.0.12)  idle nodes (1): pg-primary-11892(172.20.0.10)  failed (0):  ]
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmStandby promoteNode INFO: Adding doPromoteNode to work queue.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmStandby doPromoteNode INFO: Entering doPromoteNode()
+2025-08-08 04:34:04 com.enterprisedb.efm.exec.ExecUtil performExec INFO: 8:[/scripts/ping_wrapper.sh 172.20.0.5]
+2025-08-08 04:34:04 com.enterprisedb.efm.exec.ExecUtil performExec INFO: ProcessResult{id=8, exitValue=0, errorOut='', stdOut='PING 172.20.0.5 (172.20.0.5) 56(84) bytes of data.
+64 bytes from 172.20.0.5: icmp_seq=1 ttl=64 time=0.227 ms
+
+--- 172.20.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.227/0.227/0.227/0.000 ms'}
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmStandby primaryFoundInCluster INFO: Checking to see if primary has rejoined before promoting this standby.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent handleStatusCall INFO: responding to db status request with status: Standby%%172.20.0.11%%true%% %%false
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmStandby primaryFoundInCluster INFO: Ignoring own node status.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmStandby primaryFoundInCluster INFO: Found node of type Idle
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmStandby primaryFoundInCluster INFO: Found node of type Witness
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmStandby doPromoteNode INFO: Checking for view changes that may have happened while handling this one. Current view size 3 and total nodes is 3.0
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmNode setLastPromoted INFO: Last promoted address set to 172.20.0.11
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent setAgentDelegate INFO: setAgentDelegate: I was Standby, will now be Promoting.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmPromoting lambda$startPromotionMonitoring$0 INFO: Will monitor database until it is no longer in recovery. At that time, will switch to primary node.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent setAgentDelegate INFO: Setting agent to type Promoting
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent notifyNodesToRunPrePromotionScript INFO: Notifying all nodes to execute pre-promotion script
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.RecoveryUtils promoteStandby INFO: Triggering promotion by executing pg_ctl promote.
+2025-08-08 04:34:04 com.enterprisedb.efm.exec.ExecUtil performExec INFO: 9:[ /usr/edb/efm-5.0/bin/efm_db_functions promotestandby /etc/edb/efm-5.0/efm_cluster.properties]
+2025-08-08 04:34:04 com.enterprisedb.efm.exec.ExecUtil performExec INFO: ProcessResult{id=9, exitValue=0, errorOut='', stdOut='server promoting'}
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.Notifications sendMail INFO: Sending notification:
+From: efm@localhost
+To: [admin@example.com]
+Subject: [WARNING] EFM Promotion has started on cluster efm_cluster
+Body:
+EFM node:     172.20.0.11
+Cluster name:  efm_cluster
+Database name: postgres
+VIP:
+
+Promotion of standby has started on cluster efm_cluster.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmStandby doPromoteNode INFO: About to resume replay on promoting node. This is only needed in some cases and will not affect a database that has aleady come out of recovery.
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.Notifications lambda$sendMail$0 WARN: Unable to send mail. Subject: [WARNING] EFM Promotion has started on cluster efm_cluster.
+Error: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: localhost, 25; timeout 60000;
+  nested exception is:
+	java.net.ConnectException: Connection refused.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmStandby doPromoteNode INFO: Could not resume replay on node being promoted. This is normal if the database has already completed recovery. Message from database server: org.postgresql.util.PSQLException: ERROR: standby promotion is ongoing
+  Hint: pg_wal_replay_resume() cannot be executed after promotion is triggered.
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.EfmAgent notifyNodesToReconfigureForNewPrimary INFO: Informing all nodes of new promoting/primary address so that they can reconfigure.
+2025-08-08 04:34:04 com.enterprisedb.efm.utils.VipMonitor stopMonitoring INFO: Stopping vip monitor
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.JGroupsDelegate setState INFO: setState called: [ total nodes: 3 primary: null promoting: pg-standby-2449(172.20.0.11) standbys (0):  witnesses (1): efm-witness-59155(172.20.0.12)  idle nodes (1): pg-primary-11892(172.20.0.10)  failed (0):  ]
+2025-08-08 04:34:04 com.enterprisedb.efm.nodes.JGroupsDelegate setState INFO: setState called: [ total nodes: 3 primary: null promoting: pg-standby-2449(172.20.0.11) standbys (1): pg-primary-11892(172.20.0.10)  witnesses (1): efm-witness-59155(172.20.0.12)  idle nodes (0):  failed (0):  ]
+2025-08-08 04:34:04 com.enterprisedb.efm.DBMonitor checkOnce INFO: DB monitor testing jdbc:postgresql://172.20.0.10:5432/postgres?ApplicationName=efm-5.0
+2025-08-08 04:34:14 com.enterprisedb.efm.utils.Notifications sendMail INFO: Sending notification:
+From: efm@localhost
+To: [admin@example.com]
+Subject: [WARNING] EFM Failover has completed on cluster efm_cluster
+Body:
+EFM node:     172.20.0.11
+Cluster name:  efm_cluster
+Database name: postgres
+VIP:
+
+Failover has completed on cluster efm_cluster.
+2025-08-08 04:34:14 com.enterprisedb.efm.utils.Notifications lambda$sendMail$0 WARN: Unable to send mail. Subject: [WARNING] EFM Failover has completed on cluster efm_cluster.
+Error: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: localhost, 25; timeout 60000;
+  nested exception is:
+	java.net.ConnectException: Connection refused.
+2025-08-08 04:34:14 com.enterprisedb.efm.nodes.EfmAgent setAgentDelegate INFO: setAgentDelegate: I was Promoting, will now be Primary.
+2025-08-08 04:34:14 com.enterprisedb.efm.utils.RecoveryFilesMonitor startMonitoring INFO: Starting recovery.conf monitor for: /var/lib/postgresql/data/recovery.conf
+2025-08-08 04:34:14 com.enterprisedb.efm.utils.RecoveryFilesMonitor startMonitoring INFO: Starting recovery.signal monitor for: /var/lib/postgresql/data/recovery.signal
+2025-08-08 04:34:14 com.enterprisedb.efm.utils.RecoveryFilesMonitor startMonitoring INFO: Starting standby.signal monitor for: /var/lib/postgresql/data/standby.signal
+2025-08-08 04:34:14 com.enterprisedb.efm.nodes.EfmAgent setAgentDelegate INFO: Setting agent to type Primary
+2025-08-08 04:34:14 com.enterprisedb.efm.nodes.EfmAgent notifyNodesToRunPostPromotionScript INFO: Notifying all nodes to execute post-promotion script
+2025-08-08 04:34:14 com.enterprisedb.efm.nodes.JGroupsDelegate setState INFO: setState called: [ total nodes: 3 primary: pg-standby-2449(172.20.0.11) promoting: null standbys (1): pg-primary-11892(172.20.0.10)  witnesses (1): efm-witness-59155(172.20.0.12)  idle nodes (0):  failed (0):  ]

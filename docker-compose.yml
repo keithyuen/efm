@@ -34,14 +34,19 @@ services:
       dockerfile: Dockerfile.postgresql-efm
     container_name: pg-primary
     hostname: pg-primary
+    cap_add:
+      - NET_ADMIN  # Required for tc traffic control
+      - SYS_ADMIN  # Additional privileges for network configuration
+    privileged: true  # Enable privileged mode for network modifications
     environment:
-      - POSTGRES_DB=testdb
+      - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - PGUSER=postgres
       - POSTGRES_INITDB_ARGS=--auth-host=md5
       - EFM_NODE_TYPE=primary
       - EFM_CLUSTER_NAME=efm_cluster
+      - LATENCY_MS=30  # Network latency simulation in milliseconds (0 to disable)
     volumes:
       - pg_primary_data:/var/lib/postgresql/data
       - ./config/postgresql-primary.conf:/etc/postgresql/postgresql.conf
@@ -60,6 +65,7 @@ services:
     networks:
       efm-network:
         ipv4_address: 172.20.0.10
+    entrypoint: ["/usr/local/bin/entrypoint.sh"]
     command: |
       bash -c "
         # Clean up any stale PID and lock files
@@ -82,11 +88,8 @@ services:
           sleep 2
         done
         
-        # Create database and users with existence checks (using local socket connection)
-        # PGPASSWORD=postgres psql -U postgres -c \"CREATE DATABASE testdb\" || echo \"Database testdb may already exist\"
-        # PGPASSWORD=postgres psql -U postgres -c \"CREATE USER replicator WITH REPLICATION LOGIN PASSWORD 'replicator'\" || echo \"User replicator may already exist\"
-        # PGPASSWORD=postgres psql -U postgres -c \"CREATE USER efm WITH LOGIN PASSWORD 'efm'\" || echo \"User efm may already exist\"
-        # PGPASSWORD=postgres psql -U postgres -c \"GRANT ALL PRIVILEGES ON DATABASE testdb TO efm\" || echo \"Permissions may already be granted\"
+        # Run initialization script
+        /scripts/init-primary.sh
         
         # Start EFM
         /usr/edb/efm-5.0/bin/runefm.sh start efm_cluster
@@ -107,13 +110,18 @@ services:
       dockerfile: Dockerfile.postgresql-efm
     container_name: pg-standby
     hostname: pg-standby
+    cap_add:
+      - NET_ADMIN  # Required for tc traffic control
+      - SYS_ADMIN  # Additional privileges for network configuration
+    privileged: true  # Enable privileged mode for network modifications
     environment:
-      - POSTGRES_DB=testdb
+      - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - PGUSER=postgres
       - EFM_NODE_TYPE=standby
       - EFM_CLUSTER_NAME=efm_cluster
+      - LATENCY_MS=30  # Network latency simulation in milliseconds (0 to disable)
     volumes:
       - pg_standby_data:/var/lib/postgresql/data
       - ./config/postgresql-standby.conf:/etc/postgresql/postgresql.conf
@@ -135,10 +143,12 @@ services:
     depends_on:
       pg-primary:
         condition: service_healthy
+    entrypoint: ["/usr/local/bin/entrypoint.sh"]
     command: |
       bash -c "
         # Wait for primary to be ready
-        sleep 15
+        sleep 30
+        
         # Create base backup from primary
         if [ ! -s /var/lib/postgresql/data/PG_VERSION ]; then
           PGPASSWORD=replicator pg_basebackup -h pg-primary -D /var/lib/postgresql/data -U replicator -W -R

@@ -16,6 +16,8 @@ RUN apt-get update && \
     openjdk-17-jre-headless \
     iputils-ping \
     procps \
+    iproute2 \
+    gosu \
     && rm -rf /var/lib/apt/lists/*
 
 # Add EDB repository and install EFM (efm user created automatically)
@@ -44,8 +46,11 @@ RUN mkdir -p /home/postgres/.ssh && \
     chmod 700 /home/postgres/.ssh && \
     chown -R postgres:postgres /home/postgres/.ssh
 
-# Switch to postgres user for the rest of the setup
-USER postgres
+# Copy entrypoint script
+COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Note: Starting as root, will switch to postgres user via entrypoint
 
 # Expose PostgreSQL and EFM ports
 EXPOSE 5432 7800
