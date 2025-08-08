@@ -2703,3 +2703,10 @@ rtt min/avg/max/mdev = 0.049/0.049/0.049/0.000 ms'}
 2025-08-08 02:57:13 com.enterprisedb.efm.nodes.EfmNode handleViewChange INFO: Non-coordinator returning from view change.
 2025-08-08 02:57:13 com.enterprisedb.efm.nodes.JGroupsDelegate setState INFO: setState called: [ total nodes: 3 primary: pg-primary-2485(172.20.0.10) promoting: null standbys (1): pg-standby-56895(172.20.0.11)  witnesses (1): efm-witness-11471(172.20.0.12)  idle nodes (0):  failed (0):  ]
 2025-08-08 02:58:53 com.enterprisedb.efm.nodes.EfmAgent handleStatusCall INFO: responding to db status request with status: Standby%%172.20.0.11%%true%% %%false
+2025-08-08 03:23:02 com.enterprisedb.efm.nodes.EfmAgent handleStatusCall INFO: responding to db status request with status: Standby%%172.20.0.11%%true%% %%false
+2025-08-08 03:23:08 com.enterprisedb.efm.admin.AdminServerThread processRequest INFO: Admin server received status request.
+2025-08-08 03:23:08 com.enterprisedb.efm.admin.AdminServerThread processRequest INFO: Received param: efm_cluster
+2025-08-08 03:23:08 com.enterprisedb.efm.nodes.EfmNode checkClusterStatus INFO: Sending status message to all nodes: node_status
+2025-08-08 03:23:08 com.enterprisedb.efm.nodes.EfmAgent handleStatusCall INFO: responding to db status request with status: Standby%%172.20.0.11%%true%% %%false
+2025-08-08 03:23:08 com.enterprisedb.efm.nodes.EfmNode checkClusterStatus INFO: Status response: EfmStatus{nodeStatusList=[NodeStatus{type='Standby', address=pg-standby-56895(172.20.0.11)}, NodeStatus{type='Witness', address=efm-witness-11471(172.20.0.12)}, NodeStatus{type='Primary', address=pg-primary-2485(172.20.0.10)}]}
+2025-08-08 03:23:08 com.enterprisedb.efm.nodes.EfmNode checkClusterStatus INFO: Current internal status: [ total nodes: 3 primary: pg-primary-2485(172.20.0.10) promoting: null standbys (1): pg-standby-56895(172.20.0.11)  witnesses (1): efm-witness-11471(172.20.0.12)  idle nodes (0):  failed (0):  ]

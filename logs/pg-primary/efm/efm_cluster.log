@@ -3025,3 +3025,12 @@ rtt min/avg/max/mdev = 0.042/0.042/0.042/0.000 ms'}
 2025-08-08 02:59:14 com.enterprisedb.efm.exec.ExecUtil performExec INFO: ProcessResult{id=10, exitValue=1, errorOut='', stdOut=''}
 2025-08-08 03:00:14 com.enterprisedb.efm.exec.ExecUtil performExec INFO: 11:[ /usr/edb/efm-5.0/bin/efm_db_functions fileexists /etc/edb/efm-5.0/efm_cluster.properties /var/lib/postgresql/data/standby.signal]
 2025-08-08 03:00:14 com.enterprisedb.efm.exec.ExecUtil performExec INFO: ProcessResult{id=11, exitValue=1, errorOut='', stdOut=''}
+2025-08-08 03:23:02 com.enterprisedb.efm.admin.AdminServerThread processRequest INFO: Admin server received status request.
+2025-08-08 03:23:02 com.enterprisedb.efm.admin.AdminServerThread processRequest INFO: Received param: efm_cluster
+2025-08-08 03:23:02 com.enterprisedb.efm.nodes.EfmNode checkClusterStatus INFO: Sending status message to all nodes: node_status
+2025-08-08 03:23:02 com.enterprisedb.efm.DBMonitor checkPrimaryNumSync INFO: Sync replication not set.
+2025-08-08 03:23:02 com.enterprisedb.efm.nodes.EfmAgent handleStatusCall INFO: responding to db status request with status: Primary%%172.20.0.10%%true%% %%false
+2025-08-08 03:23:02 com.enterprisedb.efm.nodes.EfmNode checkClusterStatus INFO: Status response: EfmStatus{nodeStatusList=[NodeStatus{type='Standby', address=pg-standby-56895(172.20.0.11)}, NodeStatus{type='Witness', address=efm-witness-11471(172.20.0.12)}, NodeStatus{type='Primary', address=pg-primary-2485(172.20.0.10)}]}
+2025-08-08 03:23:02 com.enterprisedb.efm.nodes.EfmNode checkClusterStatus INFO: Current internal status: [ total nodes: 3 primary: pg-primary-2485(172.20.0.10) promoting: null standbys (1): pg-standby-56895(172.20.0.11)  witnesses (1): efm-witness-11471(172.20.0.12)  idle nodes (0):  failed (0):  ]
+2025-08-08 03:23:08 com.enterprisedb.efm.DBMonitor checkPrimaryNumSync INFO: Sync replication not set.
+2025-08-08 03:23:08 com.enterprisedb.efm.nodes.EfmAgent handleStatusCall INFO: responding to db status request with status: Primary%%172.20.0.10%%true%% %%false

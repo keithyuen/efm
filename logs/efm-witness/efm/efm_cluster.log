@@ -1271,3 +1271,5 @@ Error: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: l
   nested exception is:
 	java.net.ConnectException: Connection refused.
 2025-08-08 02:58:53 com.enterprisedb.efm.nodes.EfmWitness handleStatusCall INFO: responding to db status request with status: Witness%%172.20.0.12%%false%% %%false
+2025-08-08 03:23:02 com.enterprisedb.efm.nodes.EfmWitness handleStatusCall INFO: responding to db status request with status: Witness%%172.20.0.12%%false%% %%false
+2025-08-08 03:23:08 com.enterprisedb.efm.nodes.EfmWitness handleStatusCall INFO: responding to db status request with status: Witness%%172.20.0.12%%false%% %%false

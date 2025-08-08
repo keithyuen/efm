@@ -12,11 +12,15 @@ psql -h pg-primary.efm.orb.local -p 5432 -U postgres
 
 /usr/edb/efm-5.0/bin/efm promote efm_cluster -switchover
 
+psql
+
 CREATE TABLE IF NOT EXISTS test_replication (
     id SERIAL PRIMARY KEY,
     message TEXT,
     created_at TIMESTAMP DEFAULT NOW()
   );
+
+\dt 
 
 INSERT INTO test_replication (message) VALUES ('Initial Test');
 
