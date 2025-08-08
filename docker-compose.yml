@@ -1,0 +1,212 @@
+networks:
+  efm-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  pg_primary_data:
+  pg_standby_data:
+
+services:
+  # Dummy ping server for EFM network reachability testing
+  ping-server:
+    image: alpine:latest
+    container_name: ping-server
+    hostname: ping-server
+    networks:
+      efm-network:
+        ipv4_address: 172.20.0.5
+    command: |
+      sh -c "
+        # Install ping utilities
+        apk add --no-cache iputils
+        # Keep container running and respond to pings
+        tail -f /dev/null
+      "
+    restart: unless-stopped
+
+  # PostgreSQL Primary with EFM
+  pg-primary:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgresql-efm
+    container_name: pg-primary
+    hostname: pg-primary
+    environment:
+      - POSTGRES_DB=testdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGUSER=postgres
+      - POSTGRES_INITDB_ARGS=--auth-host=md5
+      - EFM_NODE_TYPE=primary
+      - EFM_CLUSTER_NAME=efm_cluster
+    volumes:
+      - pg_primary_data:/var/lib/postgresql/data
+      - ./config/postgresql-primary.conf:/etc/postgresql/postgresql.conf
+      - ./config/pg_hba.conf:/etc/postgresql/pg_hba.conf
+      - ./config/efm-primary.properties:/etc/edb/efm-5.0/efm_cluster.properties
+      - ./config/efm_cluster.nodes:/etc/edb/efm-5.0/efm_cluster.nodes
+      - ./scripts:/scripts
+      - ./logs/pg-primary/postgresql:/var/log/postgresql
+      - ./logs/pg-primary/efm:/var/log/efm-5.0
+    ports:
+      - "5432:5432"
+      - "7800:7800"  # EFM port
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    networks:
+      efm-network:
+        ipv4_address: 172.20.0.10
+    command: |
+      bash -c "
+        # Clean up any stale PID and lock files
+        rm -f /var/lib/postgresql/data/postmaster.pid
+        rm -f /var/run/efm-5.0/efm_cluster.lock
+        
+        # Initialize PostgreSQL if needed
+        if [ ! -s /var/lib/postgresql/data/PG_VERSION ]; then
+          initdb -D /var/lib/postgresql/data --auth-host=md5
+          cp /etc/postgresql/postgresql.conf /var/lib/postgresql/data/
+          cp /etc/postgresql/pg_hba.conf /var/lib/postgresql/data/
+        fi
+        
+        # Start PostgreSQL
+        postgres -D /var/lib/postgresql/data &
+        
+        # Wait for PostgreSQL to be ready (proper wait)
+        until pg_isready -h localhost -p 5432; do
+          echo 'Waiting for PostgreSQL to be ready...'
+          sleep 2
+        done
+        
+        # Create database and users with existence checks (using local socket connection)
+        # PGPASSWORD=postgres psql -U postgres -c \"CREATE DATABASE testdb\" || echo \"Database testdb may already exist\"
+        # PGPASSWORD=postgres psql -U postgres -c \"CREATE USER replicator WITH REPLICATION LOGIN PASSWORD 'replicator'\" || echo \"User replicator may already exist\"
+        # PGPASSWORD=postgres psql -U postgres -c \"CREATE USER efm WITH LOGIN PASSWORD 'efm'\" || echo \"User efm may already exist\"
+        # PGPASSWORD=postgres psql -U postgres -c \"GRANT ALL PRIVILEGES ON DATABASE testdb TO efm\" || echo \"Permissions may already be granted\"
+        
+        # Start EFM
+        /usr/edb/efm-5.0/bin/runefm.sh start efm_cluster
+        
+        # Keep container running
+        tail -f /dev/null
+      "
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # PostgreSQL Standby with EFM
+  pg-standby:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgresql-efm
+    container_name: pg-standby
+    hostname: pg-standby
+    environment:
+      - POSTGRES_DB=testdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGUSER=postgres
+      - EFM_NODE_TYPE=standby
+      - EFM_CLUSTER_NAME=efm_cluster
+    volumes:
+      - pg_standby_data:/var/lib/postgresql/data
+      - ./config/postgresql-standby.conf:/etc/postgresql/postgresql.conf
+      - ./config/pg_hba.conf:/etc/postgresql/pg_hba.conf
+      - ./config/efm-standby.properties:/etc/edb/efm-5.0/efm_cluster.properties
+      - ./config/efm_cluster.nodes:/etc/edb/efm-5.0/efm_cluster.nodes
+      - ./scripts:/scripts
+      - ./logs/pg-standby/postgresql:/var/log/postgresql
+      - ./logs/pg-standby/efm:/var/log/efm-5.0
+    ports:
+      - "5433:5432"
+      - "7801:7800"  # EFM port
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    networks:
+      efm-network:
+        ipv4_address: 172.20.0.11
+    depends_on:
+      pg-primary:
+        condition: service_healthy
+    command: |
+      bash -c "
+        # Wait for primary to be ready
+        sleep 15
+        # Create base backup from primary
+        if [ ! -s /var/lib/postgresql/data/PG_VERSION ]; then
+          PGPASSWORD=replicator pg_basebackup -h pg-primary -D /var/lib/postgresql/data -U replicator -W -R
+          cp /etc/postgresql/postgresql.conf /var/lib/postgresql/data/
+          cp /etc/postgresql/pg_hba.conf /var/lib/postgresql/data/
+          # Note: standby_mode is deprecated in PostgreSQL 12+, handled by postgresql.auto.conf
+          # Primary connection info is already in postgresql.conf
+        fi
+        # Clean up any stale PID and lock files
+        rm -f /var/lib/postgresql/data/postmaster.pid
+        rm -f /var/run/efm-5.0/efm_cluster.lock
+        
+        # Fix data directory permissions
+        chmod 700 /var/lib/postgresql/data
+        
+        # Start PostgreSQL in standby mode
+        postgres -D /var/lib/postgresql/data &
+        
+        # Wait for PostgreSQL to be ready
+        until pg_isready -h localhost -p 5432; do
+          echo 'Waiting for PostgreSQL standby to be ready...'
+          sleep 2
+        done
+        
+        # Start EFM
+        /usr/edb/efm-5.0/bin/runefm.sh start efm_cluster
+        
+        # Keep container running
+        tail -f /dev/null
+      "
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # EFM Witness Node
+  efm-witness:
+    build:
+      context: .
+      dockerfile: Dockerfile.efm-witness
+    container_name: efm-witness
+    hostname: efm-witness
+    environment:
+      - EFM_NODE_TYPE=witness
+      - EFM_CLUSTER_NAME=efm_cluster
+    volumes:
+      - ./config/efm-witness.properties:/etc/edb/efm-5.0/efm_cluster.properties
+      - ./config/efm_cluster.nodes:/etc/edb/efm-5.0/efm_cluster.nodes
+      - ./scripts:/scripts
+      - ./logs/efm-witness/efm:/var/log/efm-5.0
+    ports:
+      - "7802:7800"  # EFM port
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    networks:
+      efm-network:
+        ipv4_address: 172.20.0.12
+    depends_on:
+      - pg-primary
+      - pg-standby
+    command: |
+      bash -c "
+        # Wait for other nodes to be ready
+        sleep 30
+        # Start EFM witness
+        /usr/edb/efm-5.0/bin/runefm.sh start efm_cluster
+        # Keep container running
+        tail -f /dev/null
+      "

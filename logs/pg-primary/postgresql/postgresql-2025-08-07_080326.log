@@ -1,0 +1,155 @@
+2025-08-07 08:03:26 GMT [7]: [3-1] user=,db=,app=,client= LOG:  starting PostgreSQL 17.5 (Debian 17.5-1.pgdg120+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+2025-08-07 08:03:26 GMT [7]: [4-1] user=,db=,app=,client= LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2025-08-07 08:03:26 GMT [7]: [5-1] user=,db=,app=,client= LOG:  listening on IPv6 address "::", port 5432
+2025-08-07 08:03:26 GMT [7]: [6-1] user=,db=,app=,client= LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-08-07 08:03:26 GMT [12]: [1-1] user=,db=,app=,client= LOG:  database system was interrupted; last known up at 2025-08-07 07:48:03 GMT
+2025-08-07 08:03:26 GMT [12]: [2-1] user=,db=,app=,client= LOG:  database system was not properly shut down; automatic recovery in progress
+2025-08-07 08:03:26 GMT [12]: [3-1] user=,db=,app=,client= LOG:  redo starts at 0/346AAD8
+2025-08-07 08:03:26 GMT [12]: [4-1] user=,db=,app=,client= LOG:  invalid record length at 0/346AB10: expected at least 24, got 0
+2025-08-07 08:03:26 GMT [12]: [5-1] user=,db=,app=,client= LOG:  redo done at 0/346AAD8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2025-08-07 08:03:26 GMT [10]: [1-1] user=,db=,app=,client= LOG:  checkpoint starting: end-of-recovery immediate wait
+2025-08-07 08:03:26 GMT [10]: [2-1] user=,db=,app=,client= LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.002 s, total=0.012 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/346AB10, redo lsn=0/346AB10
+2025-08-07 08:03:26 GMT [7]: [7-1] user=,db=,app=,client= LOG:  database system is ready to accept connections
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:03:26 GMT [15]: [1-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:03:26 GMT [15]: [2-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:03:27 GMT [15]: [3-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:03:27 GMT [15]: [4-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:03:28 GMT [15]: [5-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:03:28 GMT [15]: [6-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+2025-08-07 08:03:28 GMT [15]: [7-1] user=,db=,app=,client= WARNING:  archiving write-ahead log file "000000010000000000000001" failed too many times, will try again later
+2025-08-07 08:03:36 GMT [24]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:03:36 GMT [24]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:03:36 GMT [24]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2025-08-07 08:03:36 GMT [24]: [4-1] user=postgres,db=postgres,app=psql,client=[local] ERROR:  syntax error at or near "\" at character 100
+2025-08-07 08:03:36 GMT [24]: [5-1] user=postgres,db=postgres,app=psql,client=[local] STATEMENT:  SELECT 'CREATE DATABASE testdb' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'testdb')\gexec
+2025-08-07 08:03:36 GMT [24]: [6-1] user=postgres,db=postgres,app=psql,client=[local] LOG:  disconnection: session time: 0:00:00.005 user=postgres database=postgres host=[local]
+2025-08-07 08:03:36 GMT [26]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:03:36 GMT [26]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:03:36 GMT [26]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2025-08-07 08:03:36 GMT [26]: [4-1] user=postgres,db=postgres,app=psql,client=[local] LOG:  disconnection: session time: 0:00:00.003 user=postgres database=postgres host=[local]
+2025-08-07 08:03:36 GMT [28]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:03:36 GMT [28]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:03:36 GMT [28]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2025-08-07 08:03:36 GMT [28]: [4-1] user=postgres,db=postgres,app=psql,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 08:03:36 GMT [30]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:03:36 GMT [30]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:03:36 GMT [30]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2025-08-07 08:03:36 GMT [30]: [4-1] user=postgres,db=postgres,app=psql,client=[local] LOG:  disconnection: session time: 0:00:00.009 user=postgres database=postgres host=[local]
+2025-08-07 08:03:56 GMT [123]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:03:56 GMT [123]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:03:56 GMT [123]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:03:56 GMT [123]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.005 user=postgres database=postgres host=[local]
+2025-08-07 08:04:26 GMT [132]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:04:26 GMT [132]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:04:26 GMT [132]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:04:26 GMT [132]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:04:28 GMT [15]: [8-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:04:28 GMT [15]: [9-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:04:29 GMT [15]: [10-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:04:29 GMT [15]: [11-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:04:30 GMT [15]: [12-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:04:30 GMT [15]: [13-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+2025-08-07 08:04:30 GMT [15]: [14-1] user=,db=,app=,client= WARNING:  archiving write-ahead log file "000000010000000000000001" failed too many times, will try again later
+2025-08-07 08:04:56 GMT [146]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:04:56 GMT [146]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:04:56 GMT [146]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:04:56 GMT [146]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 08:05:26 GMT [155]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:05:26 GMT [155]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:05:26 GMT [155]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:05:26 GMT [155]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 08:05:30 GMT [257]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:05:30 GMT [257]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:05:30 GMT [257]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2025-08-07 08:05:30 GMT [257]: [4-1] user=postgres,db=postgres,app=psql,client=[local] LOG:  disconnection: session time: 0:00:00.003 user=postgres database=postgres host=[local]
+2025-08-07 08:05:30 GMT [264]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=::1 LOG:  connection received: host=::1 port=56310
+2025-08-07 08:05:30 GMT [271]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:05:30 GMT [271]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:05:30 GMT [271]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2025-08-07 08:05:30 GMT [271]: [4-1] user=postgres,db=postgres,app=psql,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 08:05:30 GMT [278]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:05:30 GMT [278]: [2-1] user=postgres,db=testdb,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:05:30 GMT [278]: [3-1] user=postgres,db=testdb,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=testdb application_name=psql
+2025-08-07 08:05:30 GMT [278]: [4-1] user=postgres,db=testdb,app=psql,client=[local] ERROR:  relation "test_replication" does not exist at character 37
+2025-08-07 08:05:30 GMT [278]: [5-1] user=postgres,db=testdb,app=psql,client=[local] STATEMENT:  SELECT id, message, created_at FROM test_replication ORDER BY created_at DESC LIMIT 3;
+2025-08-07 08:05:30 GMT [278]: [6-1] user=postgres,db=testdb,app=psql,client=[local] LOG:  disconnection: session time: 0:00:00.003 user=postgres database=testdb host=[local]
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:05:30 GMT [15]: [15-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:05:30 GMT [15]: [16-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:05:31 GMT [15]: [17-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:05:31 GMT [15]: [18-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:05:32 GMT [15]: [19-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:05:32 GMT [15]: [20-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+2025-08-07 08:05:32 GMT [15]: [21-1] user=,db=,app=,client= WARNING:  archiving write-ahead log file "000000010000000000000001" failed too many times, will try again later
+2025-08-07 08:05:56 GMT [292]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:05:56 GMT [292]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:05:56 GMT [292]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:05:56 GMT [292]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 08:06:26 GMT [301]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:06:26 GMT [301]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:06:26 GMT [301]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:06:26 GMT [301]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:06:32 GMT [15]: [22-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:06:32 GMT [15]: [23-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:06:33 GMT [15]: [24-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:06:33 GMT [15]: [25-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:06:34 GMT [15]: [26-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:06:34 GMT [15]: [27-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+2025-08-07 08:06:34 GMT [15]: [28-1] user=,db=,app=,client= WARNING:  archiving write-ahead log file "000000010000000000000001" failed too many times, will try again later
+2025-08-07 08:06:57 GMT [316]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:06:57 GMT [316]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:06:57 GMT [316]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:06:57 GMT [316]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 08:07:27 GMT [325]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:07:27 GMT [325]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:07:27 GMT [325]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:07:27 GMT [325]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:07:35 GMT [15]: [29-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:07:35 GMT [15]: [30-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:07:36 GMT [15]: [31-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:07:36 GMT [15]: [32-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:07:37 GMT [15]: [33-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:07:37 GMT [15]: [34-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+2025-08-07 08:07:37 GMT [15]: [35-1] user=,db=,app=,client= WARNING:  archiving write-ahead log file "000000010000000000000001" failed too many times, will try again later
+2025-08-07 08:07:57 GMT [340]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:07:57 GMT [340]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:07:57 GMT [340]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:07:57 GMT [340]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 08:08:26 GMT [10]: [3-1] user=,db=,app=,client= LOG:  checkpoint starting: time
+2025-08-07 08:08:26 GMT [10]: [4-1] user=,db=,app=,client= LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.212 s, sync=0.009 s, total=0.251 s; sync files=3, longest=0.004 s, average=0.003 s; distance=1 kB, estimate=1 kB; lsn=0/346B180, redo lsn=0/346B128
+2025-08-07 08:08:27 GMT [629]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:08:27 GMT [629]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:08:27 GMT [629]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:08:27 GMT [629]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:08:37 GMT [15]: [36-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:08:37 GMT [15]: [37-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:08:38 GMT [15]: [38-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:08:38 GMT [15]: [39-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/archive/000000010000000000000001': No such file or directory
+2025-08-07 08:08:39 GMT [15]: [40-1] user=,db=,app=,client= LOG:  archive command failed with exit code 1
+2025-08-07 08:08:39 GMT [15]: [41-1] user=,db=,app=,client= DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/archive/000000010000000000000001
+2025-08-07 08:08:39 GMT [15]: [42-1] user=,db=,app=,client= WARNING:  archiving write-ahead log file "000000010000000000000001" failed too many times, will try again later
+2025-08-07 08:08:57 GMT [644]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:08:57 GMT [644]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:08:57 GMT [644]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:08:57 GMT [644]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 08:09:27 GMT [653]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 08:09:27 GMT [653]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 08:09:27 GMT [653]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 08:09:27 GMT [653]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]

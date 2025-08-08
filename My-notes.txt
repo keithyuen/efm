@@ -1,0 +1,36 @@
+
+EFM Download Repo:
+curl -1sSLf 'https://downloads.enterprisedb.com/a42f0873c732be6edafe2e22849eb0ff/enterprise/setup.deb.sh' | sudo -E bash
+
+Primary: 172.20.0.10 pg-primary.efm.orb.local 5432
+Standby: 172.20.0.11 pg-standby.efm.orb.local 5433
+Witness: 172.20.0.12 efm-witness.efm.orb.local 
+
+psql -h pg-primary.efm.orb.local -p 5432 -U postgres
+
+/usr/edb/efm-5.0/bin/efm cluster-status efm_cluster
+
+/usr/edb/efm-5.0/bin/efm promote efm_cluster -switchover
+
+CREATE TABLE IF NOT EXISTS test_replication (
+    id SERIAL PRIMARY KEY,
+    message TEXT,
+    created_at TIMESTAMP DEFAULT NOW()
+  );
+
+INSERT INTO test_replication (message) VALUES ('Initial Test');
+
+SELECT * FROM test_replication;
+
+
+Check replication - Primary;
+SELECT client_addr, state FROM pg_stat_replication;
+
+Check replication - Standby:
+SELECT pg_is_in_recovery();
+
+INSERT INTO test_replication (message) VALUES ('Before failover test');
+
+SELECT * FROM test_replication;
+
+INSERT INTO test_replication (message) VALUES ('After failover test');

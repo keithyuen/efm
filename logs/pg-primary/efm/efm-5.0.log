@@ -1,0 +1,6 @@
+2025-08-07 12:40:00,000 INFO  [main] Starting EFM service on node pg-primary
+2025-08-07 12:40:01,000 INFO  [main] EFM cluster 'efm_cluster' initialized
+2025-08-07 12:40:02,000 INFO  [main] Database connection established to postgres@172.20.0.10:5432
+2025-08-07 12:40:03,000 INFO  [main] Node priority set to 100 (primary)
+2025-08-07 12:40:04,000 INFO  [main] Joining cluster as primary node
+2025-08-07 12:40:05,000 INFO  [main] EFM agent started successfully

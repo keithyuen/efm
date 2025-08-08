@@ -1,0 +1,340 @@
+2025-08-07 12:03:29 GMT [11]: [3-1] user=,db=,app=,client= LOG:  starting PostgreSQL 17.5 (Debian 17.5-1.pgdg120+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+2025-08-07 12:03:29 GMT [11]: [4-1] user=,db=,app=,client= LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2025-08-07 12:03:29 GMT [11]: [5-1] user=,db=,app=,client= LOG:  listening on IPv6 address "::", port 5432
+2025-08-07 12:03:29 GMT [11]: [6-1] user=,db=,app=,client= LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-08-07 12:03:29 GMT [17]: [1-1] user=,db=,app=,client= LOG:  database system was interrupted while in recovery at log time 2025-08-07 11:46:12 GMT
+2025-08-07 12:03:29 GMT [17]: [2-1] user=,db=,app=,client= HINT:  If this has occurred more than once some data might be corrupted and you might need to choose an earlier recovery target.
+2025-08-07 12:03:29 GMT [17]: [3-1] user=,db=,app=,client= LOG:  entering standby mode
+2025-08-07 12:03:29 GMT [17]: [4-1] user=,db=,app=,client= LOG:  redo starts at 0/4017B88
+2025-08-07 12:03:29 GMT [17]: [5-1] user=,db=,app=,client= LOG:  consistent recovery state reached at 0/4017BC0
+2025-08-07 12:03:29 GMT [11]: [7-1] user=,db=,app=,client= LOG:  database system is ready to accept read-only connections
+2025-08-07 12:03:29 GMT [17]: [6-1] user=,db=,app=,client= LOG:  invalid record length at 0/4019718: expected at least 24, got 0
+2025-08-07 12:03:29 GMT [18]: [1-1] user=,db=,app=,client= LOG:  started streaming WAL from primary at 0/4000000 on timeline 1
+2025-08-07 12:03:31 GMT [20]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=::1 LOG:  connection received: host=::1 port=37614
+2025-08-07 12:03:32 GMT [152]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=44818
+2025-08-07 12:03:32 GMT [152]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:03:32 GMT [152]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:03:32 GMT [194]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=44834
+2025-08-07 12:03:32 GMT [194]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:03:32 GMT [194]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:03:32 GMT [194]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:00:00.003 user=efm database=postgres host=172.20.0.11 port=44834
+2025-08-07 12:03:32 GMT [197]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.10 LOG:  connection received: host=172.20.0.10 port=36594
+2025-08-07 12:03:32 GMT [197]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.10 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:03:32 GMT [197]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.10 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:03:32 GMT [197]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.10 LOG:  disconnection: session time: 0:00:00.003 user=efm database=postgres host=172.20.0.10 port=36594
+2025-08-07 12:03:32 GMT [198]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=44836
+2025-08-07 12:03:32 GMT [198]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:03:32 GMT [198]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:03:32 GMT [198]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:00:00.002 user=efm database=postgres host=172.20.0.11 port=44836
+2025-08-07 12:03:44 GMT [208]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:03:44 GMT [208]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:03:44 GMT [208]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:03:44 GMT [208]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 12:03:45 GMT [214]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.12 LOG:  connection received: host=172.20.0.12 port=37248
+2025-08-07 12:03:45 GMT [214]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.12 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:03:45 GMT [214]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.12 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:03:45 GMT [214]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.12 LOG:  disconnection: session time: 0:00:00.005 user=efm database=postgres host=172.20.0.12 port=37248
+2025-08-07 12:04:14 GMT [222]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:04:14 GMT [222]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:04:14 GMT [222]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:04:14 GMT [222]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 12:04:44 GMT [230]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:04:44 GMT [230]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:04:44 GMT [230]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:04:44 GMT [230]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:05:12 GMT [152]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:40.329 user=efm database=postgres host=172.20.0.11 port=44818
+2025-08-07 12:05:12 GMT [234]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=59622
+2025-08-07 12:05:12 GMT [234]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:05:12 GMT [234]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:05:14 GMT [242]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:05:14 GMT [242]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:05:14 GMT [242]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:05:14 GMT [242]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 12:05:44 GMT [250]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:05:44 GMT [250]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:05:44 GMT [250]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:05:44 GMT [250]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 12:06:14 GMT [258]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:06:14 GMT [258]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:06:14 GMT [258]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:06:14 GMT [258]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:06:44 GMT [268]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:06:44 GMT [268]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:06:44 GMT [268]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:06:44 GMT [268]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:06:52 GMT [234]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.997 user=efm database=postgres host=172.20.0.11 port=59622
+2025-08-07 12:06:52 GMT [269]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=59054
+2025-08-07 12:06:52 GMT [269]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:06:52 GMT [269]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:07:14 GMT [277]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:07:14 GMT [277]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:07:14 GMT [277]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:07:14 GMT [277]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 12:07:45 GMT [286]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:07:45 GMT [286]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:07:45 GMT [286]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:07:45 GMT [286]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:08:15 GMT [295]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:08:15 GMT [295]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:08:15 GMT [295]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:08:15 GMT [295]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 12:08:29 GMT [15]: [1-1] user=,db=,app=,client= LOG:  restartpoint starting: time
+2025-08-07 12:08:29 GMT [15]: [2-1] user=,db=,app=,client= LOG:  restartpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.115 s, sync=0.005 s, total=0.137 s; sync files=2, longest=0.004 s, average=0.003 s; distance=13 kB, estimate=13 kB; lsn=0/401B300, redo lsn=0/401B2A8
+2025-08-07 12:08:29 GMT [15]: [3-1] user=,db=,app=,client= LOG:  recovery restart point at 0/401B2A8
+2025-08-07 12:08:29 GMT [15]: [4-1] user=,db=,app=,client= DETAIL:  Last completed transaction was at log time 2025-08-07 12:02:46.060323+00.
+2025-08-07 12:08:32 GMT [269]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.999 user=efm database=postgres host=172.20.0.11 port=59054
+2025-08-07 12:08:32 GMT [296]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=52408
+2025-08-07 12:08:32 GMT [296]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:08:32 GMT [296]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:08:45 GMT [305]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:08:45 GMT [305]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:08:45 GMT [305]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:08:45 GMT [305]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:09:15 GMT [313]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:09:15 GMT [313]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:09:15 GMT [313]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:09:15 GMT [313]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.004 user=postgres database=postgres host=[local]
+2025-08-07 12:09:45 GMT [321]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:09:45 GMT [321]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:09:45 GMT [321]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:09:45 GMT [321]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:10:12 GMT [296]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.987 user=efm database=postgres host=172.20.0.11 port=52408
+2025-08-07 12:10:12 GMT [324]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=35466
+2025-08-07 12:10:12 GMT [324]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:10:12 GMT [324]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:10:15 GMT [332]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:10:15 GMT [332]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:10:15 GMT [332]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:10:15 GMT [332]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 12:10:45 GMT [342]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:10:45 GMT [342]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:10:45 GMT [342]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:10:45 GMT [342]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:11:15 GMT [350]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:11:15 GMT [350]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:11:15 GMT [350]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:11:15 GMT [350]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:11:45 GMT [358]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:11:45 GMT [358]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:11:45 GMT [358]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:11:45 GMT [358]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:11:52 GMT [324]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.986 user=efm database=postgres host=172.20.0.11 port=35466
+2025-08-07 12:11:52 GMT [359]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=55380
+2025-08-07 12:11:52 GMT [359]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:11:52 GMT [359]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:12:15 GMT [367]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:12:15 GMT [367]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:12:15 GMT [367]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:12:15 GMT [367]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:12:45 GMT [377]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:12:45 GMT [377]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:12:45 GMT [377]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:12:45 GMT [377]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:13:15 GMT [385]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:13:15 GMT [385]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:13:15 GMT [385]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:13:15 GMT [385]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:13:32 GMT [359]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.997 user=efm database=postgres host=172.20.0.11 port=55380
+2025-08-07 12:13:32 GMT [386]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=53230
+2025-08-07 12:13:32 GMT [386]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:13:32 GMT [386]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:13:45 GMT [394]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:13:45 GMT [394]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:13:45 GMT [394]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:13:45 GMT [394]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:13:47 GMT [395]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.10 LOG:  connection received: host=172.20.0.10 port=49306
+2025-08-07 12:13:47 GMT [395]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.10 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:13:47 GMT [395]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.10 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:13:47 GMT [395]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.10 LOG:  disconnection: session time: 0:00:00.037 user=efm database=postgres host=172.20.0.10 port=49306
+2025-08-07 12:13:47 GMT [396]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.10 LOG:  connection received: host=172.20.0.10 port=49310
+2025-08-07 12:13:47 GMT [396]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.10 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:13:47 GMT [396]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.10 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:13:47 GMT [396]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.10 LOG:  disconnection: session time: 0:00:00.003 user=efm database=postgres host=172.20.0.10 port=49310
+2025-08-07 12:13:47 GMT [397]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.10 LOG:  connection received: host=172.20.0.10 port=49326
+2025-08-07 12:13:47 GMT [397]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.10 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:13:47 GMT [397]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.10 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:13:47 GMT [397]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.10 LOG:  disconnection: session time: 0:00:00.002 user=efm database=postgres host=172.20.0.10 port=49326
+2025-08-07 12:13:47 GMT [508]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=45142
+2025-08-07 12:13:47 GMT [508]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:13:47 GMT [508]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:13:47 GMT [508]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:00:00.031 user=efm database=postgres host=172.20.0.11 port=45142
+2025-08-07 12:13:47 GMT [510]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=45156
+2025-08-07 12:13:47 GMT [510]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:13:47 GMT [510]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:13:47 GMT [510]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:00:00.003 user=efm database=postgres host=172.20.0.11 port=45156
+2025-08-07 12:13:47 GMT [511]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=45164
+2025-08-07 12:13:47 GMT [511]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:13:47 GMT [511]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:13:47 GMT [511]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:00:00.004 user=efm database=postgres host=172.20.0.11 port=45164
+2025-08-07 12:13:48 GMT [514]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.12 LOG:  connection received: host=172.20.0.12 port=49952
+2025-08-07 12:13:48 GMT [514]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.12 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:13:48 GMT [514]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.12 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:13:48 GMT [514]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.12 LOG:  disconnection: session time: 0:00:00.036 user=efm database=postgres host=172.20.0.12 port=49952
+2025-08-07 12:13:48 GMT [515]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.12 LOG:  connection received: host=172.20.0.12 port=49968
+2025-08-07 12:13:48 GMT [515]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.12 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:13:48 GMT [515]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.12 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:13:48 GMT [515]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.12 LOG:  disconnection: session time: 0:00:00.004 user=efm database=postgres host=172.20.0.12 port=49968
+2025-08-07 12:13:48 GMT [516]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.12 LOG:  connection received: host=172.20.0.12 port=49970
+2025-08-07 12:13:48 GMT [516]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.12 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:13:48 GMT [516]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.12 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:13:48 GMT [516]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.12 LOG:  disconnection: session time: 0:00:00.002 user=efm database=postgres host=172.20.0.12 port=49970
+2025-08-07 12:13:48 GMT [523]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:13:48 GMT [523]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:13:48 GMT [523]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2025-08-07 12:13:48 GMT [523]: [4-1] user=postgres,db=postgres,app=psql,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:13:48 GMT [530]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=::1 LOG:  connection received: host=::1 port=41604
+2025-08-07 12:13:48 GMT [537]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:13:48 GMT [537]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:13:48 GMT [537]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2025-08-07 12:13:48 GMT [537]: [4-1] user=postgres,db=postgres,app=psql,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 12:13:49 GMT [544]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:13:49 GMT [544]: [2-1] user=postgres,db=testdb,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:13:49 GMT [544]: [3-1] user=postgres,db=testdb,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=testdb application_name=psql
+2025-08-07 12:13:49 GMT [544]: [4-1] user=postgres,db=testdb,app=psql,client=[local] ERROR:  relation "test_replication" does not exist at character 37
+2025-08-07 12:13:49 GMT [544]: [5-1] user=postgres,db=testdb,app=psql,client=[local] STATEMENT:  SELECT id, message, created_at FROM test_replication ORDER BY created_at DESC LIMIT 3;
+2025-08-07 12:13:49 GMT [544]: [6-1] user=postgres,db=testdb,app=psql,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=testdb host=[local]
+2025-08-07 12:14:15 GMT [552]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:14:15 GMT [552]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:14:15 GMT [552]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:14:15 GMT [552]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:14:45 GMT [562]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:14:45 GMT [562]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:14:45 GMT [562]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:14:45 GMT [562]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:15:12 GMT [386]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.997 user=efm database=postgres host=172.20.0.11 port=53230
+2025-08-07 12:15:12 GMT [563]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=39724
+2025-08-07 12:15:12 GMT [563]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:15:12 GMT [563]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:15:15 GMT [571]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:15:15 GMT [571]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:15:15 GMT [571]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:15:15 GMT [571]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:15:45 GMT [580]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:15:45 GMT [580]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:15:45 GMT [580]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:15:45 GMT [580]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:16:16 GMT [588]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:16:16 GMT [588]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:16:16 GMT [588]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:16:16 GMT [588]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:16:46 GMT [597]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:16:46 GMT [597]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:16:46 GMT [597]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:16:46 GMT [597]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:16:52 GMT [563]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.996 user=efm database=postgres host=172.20.0.11 port=39724
+2025-08-07 12:16:52 GMT [598]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=44312
+2025-08-07 12:16:52 GMT [598]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:16:52 GMT [598]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:17:16 GMT [606]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:17:16 GMT [606]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:17:16 GMT [606]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:17:16 GMT [606]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 12:17:46 GMT [616]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:17:46 GMT [616]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:17:46 GMT [616]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:17:46 GMT [616]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:18:16 GMT [624]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:18:16 GMT [624]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:18:16 GMT [624]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:18:16 GMT [624]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:18:32 GMT [598]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.992 user=efm database=postgres host=172.20.0.11 port=44312
+2025-08-07 12:18:32 GMT [625]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=59858
+2025-08-07 12:18:32 GMT [625]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:18:32 GMT [625]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:18:46 GMT [633]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:18:46 GMT [633]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:18:46 GMT [633]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:18:46 GMT [633]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:19:16 GMT [642]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:19:16 GMT [642]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:19:16 GMT [642]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:19:16 GMT [642]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:19:46 GMT [651]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:19:46 GMT [651]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:19:46 GMT [651]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:19:46 GMT [651]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:20:12 GMT [625]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.985 user=efm database=postgres host=172.20.0.11 port=59858
+2025-08-07 12:20:12 GMT [652]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=45000
+2025-08-07 12:20:12 GMT [652]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:20:12 GMT [652]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:20:16 GMT [660]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:20:16 GMT [660]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:20:16 GMT [660]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:20:16 GMT [660]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:20:46 GMT [670]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:20:46 GMT [670]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:20:46 GMT [670]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:20:46 GMT [670]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:21:16 GMT [678]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:21:16 GMT [678]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:21:16 GMT [678]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:21:16 GMT [678]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:21:32 GMT [681]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.1 LOG:  connection received: host=172.20.0.1 port=34588
+2025-08-07 12:21:35 GMT [682]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.1 LOG:  connection received: host=172.20.0.1 port=34600
+2025-08-07 12:21:35 GMT [682]: [2-1] user=postgres,db=postgres,app=[unknown],client=172.20.0.1 FATAL:  password authentication failed for user "postgres"
+2025-08-07 12:21:35 GMT [682]: [3-1] user=postgres,db=postgres,app=[unknown],client=172.20.0.1 DETAIL:  User "postgres" has no password assigned.
+	Connection matched file "/var/lib/postgresql/data/pg_hba.conf" line 14: "host    all             postgres        172.20.0.0/16           md5"
+2025-08-07 12:21:46 GMT [690]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:21:46 GMT [690]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:21:46 GMT [690]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:21:46 GMT [690]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:21:52 GMT [652]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.989 user=efm database=postgres host=172.20.0.11 port=45000
+2025-08-07 12:21:52 GMT [691]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=49636
+2025-08-07 12:21:52 GMT [691]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:21:52 GMT [691]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:22:16 GMT [699]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:22:16 GMT [699]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:22:16 GMT [699]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:22:16 GMT [699]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.000 user=postgres database=postgres host=[local]
+2025-08-07 12:22:46 GMT [710]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:22:46 GMT [710]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:22:46 GMT [710]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:22:46 GMT [710]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.003 user=postgres database=postgres host=[local]
+2025-08-07 12:23:16 GMT [718]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:23:16 GMT [718]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:23:16 GMT [718]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:23:16 GMT [718]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:23:32 GMT [691]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.997 user=efm database=postgres host=172.20.0.11 port=49636
+2025-08-07 12:23:32 GMT [720]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=33014
+2025-08-07 12:23:32 GMT [720]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:23:32 GMT [720]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:23:46 GMT [728]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:23:46 GMT [728]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:23:46 GMT [728]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:23:46 GMT [728]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:24:16 GMT [738]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:24:16 GMT [738]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:24:16 GMT [738]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:24:16 GMT [738]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:24:47 GMT [746]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:24:47 GMT [746]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:24:47 GMT [746]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:24:47 GMT [746]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:25:12 GMT [720]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.984 user=efm database=postgres host=172.20.0.11 port=33014
+2025-08-07 12:25:12 GMT [747]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=50818
+2025-08-07 12:25:12 GMT [747]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:25:12 GMT [747]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:25:17 GMT [755]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:25:17 GMT [755]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:25:17 GMT [755]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:25:17 GMT [755]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:25:47 GMT [763]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:25:47 GMT [763]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:25:47 GMT [763]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:25:47 GMT [763]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:26:17 GMT [771]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:26:17 GMT [771]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:26:17 GMT [771]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:26:17 GMT [771]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 12:26:47 GMT [779]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:26:47 GMT [779]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:26:47 GMT [779]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:26:47 GMT [779]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]
+2025-08-07 12:26:52 GMT [747]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:01:39.989 user=efm database=postgres host=172.20.0.11 port=50818
+2025-08-07 12:26:52 GMT [781]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=44212
+2025-08-07 12:26:52 GMT [781]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 12:26:52 GMT [781]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 12:27:17 GMT [789]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 12:27:17 GMT [789]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 12:27:17 GMT [789]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 12:27:17 GMT [789]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.002 user=postgres database=postgres host=[local]

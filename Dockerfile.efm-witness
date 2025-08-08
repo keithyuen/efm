@@ -1,0 +1,58 @@
+# EFM Witness Node Dockerfile (no PostgreSQL)
+FROM debian:12
+
+# Install required packages including Java for EFM
+RUN apt-get update && \
+    apt-get install -y \
+    wget \
+    gnupg2 \
+    lsb-release \
+    curl \
+    openssh-client \
+    vim \
+    net-tools \
+    postgresql-client-15 \
+    ca-certificates \
+    apt-transport-https \
+    openjdk-17-jre-headless \
+    iputils-ping \
+    procps \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add EDB repository and install EFM (efm user created automatically)
+RUN curl -1sSLf 'https://downloads.enterprisedb.com/a42f0873c732be6edafe2e22849eb0ff/enterprise/setup.deb.sh' | bash && \
+    apt-get update && \
+    apt-get install -y edb-efm50 && \
+    rm -rf /var/lib/apt/lists/*
+
+# Create postgres user for EFM
+RUN useradd -r -m -s /bin/bash postgres
+
+# Create necessary directories and set permissions
+RUN mkdir -p /etc/edb/efm-5.0 && \
+    mkdir -p /var/log/efm-5.0 && \
+    mkdir -p /var/run/efm-5.0 && \
+    chown -R postgres:postgres /etc/edb/efm-5.0 && \
+    chown -R postgres:postgres /var/log/efm-5.0 && \
+    chown -R postgres:postgres /var/run/efm-5.0
+
+# Set JAVA_HOME and PATH for EFM
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-arm64
+ENV PATH=$PATH:$JAVA_HOME/bin
+
+# Set up SSH keys for passwordless authentication (simulation)
+RUN mkdir -p /home/postgres/.ssh && \
+    ssh-keygen -t rsa -b 2048 -f /home/postgres/.ssh/id_rsa -N "" && \
+    cp /home/postgres/.ssh/id_rsa.pub /home/postgres/.ssh/authorized_keys && \
+    chmod 600 /home/postgres/.ssh/authorized_keys && \
+    chmod 700 /home/postgres/.ssh && \
+    chown -R postgres:postgres /home/postgres/.ssh
+
+# Switch to postgres user
+USER postgres
+
+# Expose EFM port
+EXPOSE 7800
+
+# Default command
+CMD ["/bin/bash"]

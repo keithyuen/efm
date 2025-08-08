@@ -1,0 +1,55 @@
+2025-08-07 11:44:14 GMT [9]: [3-1] user=,db=,app=,client= LOG:  starting PostgreSQL 17.5 (Debian 17.5-1.pgdg120+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+2025-08-07 11:44:14 GMT [9]: [4-1] user=,db=,app=,client= LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2025-08-07 11:44:14 GMT [9]: [5-1] user=,db=,app=,client= LOG:  listening on IPv6 address "::", port 5432
+2025-08-07 11:44:14 GMT [9]: [6-1] user=,db=,app=,client= LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-08-07 11:44:14 GMT [14]: [1-1] user=,db=,app=,client= LOG:  database system was interrupted while in recovery at log time 2025-08-07 11:31:22 GMT
+2025-08-07 11:44:14 GMT [14]: [2-1] user=,db=,app=,client= HINT:  If this has occurred more than once some data might be corrupted and you might need to choose an earlier recovery target.
+2025-08-07 11:44:14 GMT [14]: [3-1] user=,db=,app=,client= LOG:  entering standby mode
+2025-08-07 11:44:14 GMT [14]: [4-1] user=,db=,app=,client= LOG:  redo starts at 0/4016058
+2025-08-07 11:44:14 GMT [14]: [5-1] user=,db=,app=,client= LOG:  consistent recovery state reached at 0/4016160
+2025-08-07 11:44:14 GMT [9]: [7-1] user=,db=,app=,client= LOG:  database system is ready to accept read-only connections
+2025-08-07 11:44:14 GMT [14]: [6-1] user=,db=,app=,client= LOG:  invalid record length at 0/4017B10: expected at least 24, got 0
+2025-08-07 11:44:14 GMT [15]: [1-1] user=,db=,app=,client= FATAL:  could not connect to the primary server: connection to server at "pg-primary" (172.20.0.10), port 5432 failed: Connection refused
+		Is the server running on that host and accepting TCP/IP connections?
+2025-08-07 11:44:14 GMT [16]: [1-1] user=,db=,app=,client= FATAL:  could not connect to the primary server: connection to server at "pg-primary" (172.20.0.10), port 5432 failed: Connection refused
+		Is the server running on that host and accepting TCP/IP connections?
+2025-08-07 11:44:14 GMT [14]: [7-1] user=,db=,app=,client= LOG:  waiting for WAL to become available at 0/4002000
+2025-08-07 11:44:19 GMT [17]: [1-1] user=,db=,app=,client= FATAL:  could not connect to the primary server: connection to server at "pg-primary" (172.20.0.10), port 5432 failed: Connection refused
+		Is the server running on that host and accepting TCP/IP connections?
+2025-08-07 11:44:19 GMT [14]: [8-1] user=,db=,app=,client= LOG:  waiting for WAL to become available at 0/4002000
+2025-08-07 11:44:24 GMT [60]: [1-1] user=,db=,app=,client= FATAL:  could not connect to the primary server: connection to server at "pg-primary" (172.20.0.10), port 5432 failed: Connection refused
+		Is the server running on that host and accepting TCP/IP connections?
+2025-08-07 11:44:24 GMT [14]: [9-1] user=,db=,app=,client= LOG:  waiting for WAL to become available at 0/4002000
+2025-08-07 11:44:25 GMT [151]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=36430
+2025-08-07 11:44:25 GMT [151]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 11:44:25 GMT [151]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 11:44:28 GMT [192]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.11 LOG:  connection received: host=172.20.0.11 port=49860
+2025-08-07 11:44:28 GMT [192]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 11:44:28 GMT [192]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.11 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 11:44:28 GMT [192]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.11 LOG:  disconnection: session time: 0:00:00.004 user=efm database=postgres host=172.20.0.11 port=49860
+2025-08-07 11:44:29 GMT [203]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=[local] LOG:  connection received: host=[local]
+2025-08-07 11:44:29 GMT [203]: [2-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authenticated: identity="postgres" method=peer (/var/lib/postgresql/data/pg_hba.conf:7)
+2025-08-07 11:44:29 GMT [203]: [3-1] user=postgres,db=postgres,app=[unknown],client=[local] LOG:  connection authorized: user=postgres database=postgres application_name=pg_isready
+2025-08-07 11:44:29 GMT [203]: [4-1] user=postgres,db=postgres,app=pg_isready,client=[local] LOG:  disconnection: session time: 0:00:00.001 user=postgres database=postgres host=[local]
+2025-08-07 11:44:29 GMT [204]: [1-1] user=,db=,app=,client= FATAL:  could not connect to the primary server: connection to server at "pg-primary" (172.20.0.10), port 5432 failed: Connection refused
+		Is the server running on that host and accepting TCP/IP connections?
+2025-08-07 11:44:29 GMT [14]: [10-1] user=,db=,app=,client= LOG:  waiting for WAL to become available at 0/4002000
+2025-08-07 11:44:30 GMT [212]: [1-1] user=[unknown],db=[unknown],app=[unknown],client=172.20.0.12 LOG:  connection received: host=172.20.0.12 port=34512
+2025-08-07 11:44:30 GMT [212]: [2-1] user=efm,db=postgres,app=[unknown],client=172.20.0.12 LOG:  connection authenticated: identity="efm" method=md5 (/var/lib/postgresql/data/pg_hba.conf:15)
+2025-08-07 11:44:30 GMT [212]: [3-1] user=efm,db=postgres,app=[unknown],client=172.20.0.12 LOG:  connection authorized: user=efm database=postgres
+2025-08-07 11:44:30 GMT [212]: [4-1] user=efm,db=postgres,app=efm-5.0,client=172.20.0.12 LOG:  disconnection: session time: 0:00:00.030 user=efm database=postgres host=172.20.0.12 port=34512
+2025-08-07 11:44:34 GMT [213]: [1-1] user=,db=,app=,client= FATAL:  could not connect to the primary server: connection to server at "pg-primary" (172.20.0.10), port 5432 failed: Connection refused
+		Is the server running on that host and accepting TCP/IP connections?
+2025-08-07 11:44:34 GMT [14]: [11-1] user=,db=,app=,client= LOG:  waiting for WAL to become available at 0/4002000
+2025-08-07 11:44:39 GMT [214]: [1-1] user=,db=,app=,client= FATAL:  could not connect to the primary server: connection to server at "pg-primary" (172.20.0.10), port 5432 failed: Connection refused
+		Is the server running on that host and accepting TCP/IP connections?
+2025-08-07 11:44:39 GMT [14]: [12-1] user=,db=,app=,client= LOG:  waiting for WAL to become available at 0/4002000
+2025-08-07 11:44:44 GMT [215]: [1-1] user=,db=,app=,client= FATAL:  could not connect to the primary server: connection to server at "pg-primary" (172.20.0.10), port 5432 failed: Connection refused
+		Is the server running on that host and accepting TCP/IP connections?
+2025-08-07 11:44:44 GMT [14]: [13-1] user=,db=,app=,client= LOG:  waiting for WAL to become available at 0/4002000
+2025-08-07 11:44:49 GMT [216]: [1-1] user=,db=,app=,client= FATAL:  could not connect to the primary server: connection to server at "pg-primary" (172.20.0.10), port 5432 failed: Connection refused
+		Is the server running on that host and accepting TCP/IP connections?
+2025-08-07 11:44:49 GMT [14]: [14-1] user=,db=,app=,client= LOG:  waiting for WAL to become available at 0/4002000
+2025-08-07 11:44:54 GMT [217]: [1-1] user=,db=,app=,client= FATAL:  could not connect to the primary server: connection to server at "pg-primary" (172.20.0.10), port 5432 failed: Connection refused
+		Is the server running on that host and accepting TCP/IP connections?
+2025-08-07 11:44:54 GMT [14]: [15-1] user=,db=,app=,client= LOG:  waiting for WAL to become available at 0/4002000
