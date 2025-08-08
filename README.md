@@ -33,8 +33,8 @@ This environment consists of three containers:
 ### 1. Clone and Setup
 
 ```bash
-git clone <your-repo> efm-test
-cd efm-test
+gh repo clone keithyuen/efm
+cd efm
 ```
 
 ### 2. Make scripts executable
