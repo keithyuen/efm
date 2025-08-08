@@ -1,5 +1,0 @@
-2025-08-07 12:40:00.000 UTC [1] LOG:  database system was shut down at 2025-08-07 12:39:00 UTC
-2025-08-07 12:40:01.000 UTC [1] LOG:  database system is ready to accept connections
-2025-08-07 12:40:02.000 UTC [2] LOG:  autovacuum launcher started
-2025-08-07 12:40:03.000 UTC [3] LOG:  logical replication launcher started
-2025-08-07 12:40:05.000 UTC [4] LOG:  started streaming WAL from primary at 0/1000000 on timeline 1

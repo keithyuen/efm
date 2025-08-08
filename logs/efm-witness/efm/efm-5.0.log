@@ -1,7 +1,0 @@
-2025-08-07 12:40:20,000 INFO  [main] Starting EFM service on witness node
-2025-08-07 12:40:21,000 INFO  [main] EFM cluster 'efm_cluster' initialized
-2025-08-07 12:40:22,000 INFO  [main] Node priority set to 1 (witness)
-2025-08-07 12:40:23,000 INFO  [main] Joining cluster as witness node
-2025-08-07 12:40:24,000 INFO  [main] Primary node detected: pg-primary
-2025-08-07 12:40:25,000 INFO  [main] Standby node detected: pg-standby
-2025-08-07 12:40:26,000 INFO  [main] EFM witness started successfully
